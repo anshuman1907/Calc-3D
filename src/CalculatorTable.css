@@ -4,7 +4,7 @@
     min-height: 100vh;
     background:
         linear-gradient(135deg, rgba(102, 126, 234, 0.78) 0%, rgba(118, 75, 162, 0.82) 100%),
-        url('/calculator-bg.svg') center / cover no-repeat fixed;
+        url('./assets/calculator-bg.svg') center / cover no-repeat fixed;
     display: flex;
     justify-content: center;
     align-items: center;

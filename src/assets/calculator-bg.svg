@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="50%" stop-color="#302b63"/>
+      <stop offset="100%" stop-color="#24243e"/>
+    </linearGradient>
+    <linearGradient id="calcBody" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#667eea"/>
+      <stop offset="100%" stop-color="#764ba2"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#c8f7dc"/>
+      <stop offset="100%" stop-color="#7bed9f"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+
+  <g opacity="0.12" transform="translate(80, 180) rotate(-12)">
+    <rect x="0" y="0" width="280" height="380" rx="24" fill="url(#calcBody)"/>
+    <rect x="24" y="24" width="232" height="72" rx="10" fill="url(#screen)"/>
+    <text x="240" y="78" text-anchor="end" font-family="monospace" font-size="36" font-weight="bold" fill="#1a472a">12345</text>
+    <g fill="rgba(255,255,255,0.85)">
+      <rect x="24" y="120" width="52" height="48" rx="8"/><rect x="88" y="120" width="52" height="48" rx="8"/>
+      <rect x="152" y="120" width="52" height="48" rx="8"/><rect x="216" y="120" width="40" height="48" rx="8" fill="#ffa940"/>
+      <rect x="24" y="180" width="52" height="48" rx="8"/><rect x="88" y="180" width="52" height="48" rx="8"/>
+      <rect x="152" y="180" width="52" height="48" rx="8"/><rect x="216" y="180" width="40" height="48" rx="8" fill="#ffa940"/>
+      <rect x="24" y="240" width="52" height="48" rx="8"/><rect x="88" y="240" width="52" height="48" rx="8"/>
+      <rect x="152" y="240" width="52" height="48" rx="8"/><rect x="216" y="240" width="40" height="108" rx="8" fill="#52c41a"/>
+      <rect x="24" y="300" width="116" height="48" rx="8"/>
+    </g>
+  </g>
+
+  <g opacity="0.1" transform="translate(1480, 520) rotate(18)">
+    <rect x="0" y="0" width="320" height="420" rx="28" fill="url(#calcBody)"/>
+    <rect x="28" y="28" width="264" height="80" rx="12" fill="url(#screen)"/>
+    <text x="276" y="86" text-anchor="end" font-family="monospace" font-size="40" font-weight="bold" fill="#1a472a">3.14159</text>
+    <g fill="rgba(255,255,255,0.8)">
+      <rect x="28" y="130" width="58" height="52" rx="8"/><rect x="98" y="130" width="58" height="52" rx="8"/>
+      <rect x="168" y="130" width="58" height="52" rx="8"/><rect x="238" y="130" width="54" height="52" rx="8" fill="#ff6b6b"/>
+      <rect x="28" y="196" width="58" height="52" rx="8"/><rect x="98" y="196" width="58" height="52" rx="8"/>
+      <rect x="168" y="196" width="58" height="52" rx="8"/><rect x="238" y="196" width="54" height="52" rx="8" fill="#ff6b6b"/>
+      <rect x="28" y="262" width="128" height="52" rx="8"/>
+      <rect x="168" y="262" width="58" height="118" rx="8" fill="#52c41a"/>
+    </g>
+  </g>
+
+  <g font-family="Georgia, serif" fill="#a78bfa" opacity="0.18">
+    <text x="420" y="200" font-size="120" transform="rotate(-15 420 200)">+</text>
+    <text x="720" y="900" font-size="100" transform="rotate(8 720 900)">&#8722;</text>
+    <text x="1100" y="180" font-size="90" transform="rotate(20 1100 180)">&#215;</text>
+    <text x="1350" y="750" font-size="110" transform="rotate(-10 1350 750)">&#247;</text>
+    <text x="580" y="500" font-size="80" transform="rotate(5 580 500)">=</text>
+    <text x="900" y="400" font-size="70" transform="rotate(-8 900 400)">%</text>
+    <text x="1600" y="300" font-size="85" transform="rotate(12 1600 300)">&#960;</text>
+    <text x="200" y="700" font-size="75" transform="rotate(-20 200 700)">&#8730;</text>
+  </g>
+
+  <g font-family="monospace" font-weight="bold" fill="#c4b5fd" opacity="0.14">
+    <text x="350" y="380" font-size="48">7</text>
+    <text x="850" y="150" font-size="42">42</text>
+    <text x="1250" y="480" font-size="52">9</text>
+    <text x="1680" y="680" font-size="44">0</text>
+    <text x="500" y="820" font-size="40">3.14</text>
+    <text x="1050" y="950" font-size="46">&#8734;</text>
+    <text x="150" y="450" font-size="38">100</text>
+    <text x="1750" y="150" font-size="50">8</text>
+  </g>
+
+  <g stroke="#818cf8" stroke-width="1.5" fill="none" opacity="0.12">
+    <path d="M600 280 Q650 250 700 280 T800 280"/>
+    <path d="M1000 600 L1040 560 L1080 600 L1120 560"/>
+    <path d="M300 900 Q350 870 400 900"/>
+    <text x="620" y="320" font-family="serif" font-size="22" fill="#818cf8" opacity="1">E = mc&#178;</text>
+    <text x="980" y="650" font-family="serif" font-size="20" fill="#818cf8" opacity="1">a&#178; + b&#178; = c&#178;</text>
+  </g>
+</svg>
