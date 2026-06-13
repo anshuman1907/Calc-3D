@@ -1,0 +1,528 @@
+/* Main Container */
+.table-container {
+    width: 100%;
+    min-height: 100vh;
+    background:
+        linear-gradient(135deg, rgba(102, 126, 234, 0.78) 0%, rgba(118, 75, 162, 0.82) 100%),
+        url('/calculator-bg.svg') center / cover no-repeat fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    perspective: 1200px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Floating calculator-themed decorations */
+.bg-math-deco {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.math-symbol {
+    position: absolute;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.08);
+    user-select: none;
+    animation: floatSymbol 20s ease-in-out infinite;
+}
+
+.math-symbol:nth-child(1) { top: 12%; left: 8%; font-size: 4rem; animation-delay: 0s; }
+.math-symbol:nth-child(2) { top: 70%; left: 15%; font-size: 3.5rem; animation-delay: -4s; }
+.math-symbol:nth-child(3) { top: 20%; right: 12%; font-size: 3.8rem; animation-delay: -8s; }
+.math-symbol:nth-child(4) { bottom: 15%; right: 18%; font-size: 4.2rem; animation-delay: -12s; }
+.math-symbol:nth-child(5) { top: 45%; left: 5%; font-size: 2.8rem; animation-delay: -6s; }
+.math-symbol:nth-child(6) { bottom: 25%; left: 40%; font-size: 3rem; animation-delay: -10s; }
+
+@keyframes floatSymbol {
+    0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.08; }
+    50% { transform: translateY(-18px) rotate(5deg); opacity: 0.14; }
+}
+
+/* Glow Light Effect */
+.glow-light {
+    position: fixed;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Rotating Table Wrapper */
+.rotating-table-wrapper {
+    width: 100%;
+    max-width: 900px;
+    height: 600px;
+    position: relative;
+    z-index: 10;
+    perspective: 1000px;
+}
+
+.rotating-table {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    /* smoother transform easing for manual rotation */
+    transition: transform 0.12s cubic-bezier(.2, .9, .3, 1);
+    cursor: grab;
+}
+
+/* Table Faces */
+.table-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    border: 12px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 0 30px rgba(0, 0, 0, 0.08);
+}
+
+.table-front {
+    /* 50% translucent whiteboard background while keeping children opaque */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(245, 245, 245, 0.5) 100%);
+    z-index: 2;
+}
+
+.table-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, rgba(232, 232, 232, 0.5) 0%, rgba(208, 208, 208, 0.5) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+/* Reset rotation button */
+.reset-rotation-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 40;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(17, 24, 39, 0.12);
+    transition: transform 0.12s ease, background 0.12s ease;
+}
+
+.reset-rotation-btn:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 1);
+}
+
+.reset-rotation-btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.mirror-text {
+    font-size: 56px;
+    font-weight: 900;
+    color: #22c55e;
+    transform: scaleX(-1);
+    letter-spacing: 5px;
+}
+
+/* Table Content */
+.table-content {
+    width: 100%;
+    height: 100%;
+    padding: 25px;
+    display: flex;
+    flex-direction: row;
+    /* main area + side panel */
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+/* Main and Side Areas */
+.main-area {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.side-area {
+    width: 280px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Calculator Top Section */
+.calculator-top {
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.calculator-title {
+    margin: 0;
+    font-size: 28px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+/* Display Area - Table */
+.display-area-table {
+    background: linear-gradient(135deg, #f9f9f9 0%, #e8e8e8 100%);
+    border-radius: 15px;
+    padding: 15px;
+    border: 2px solid #667eea;
+    box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.display-table {
+    font-size: 44px;
+    text-align: right;
+    font-weight: bold;
+    color: #333;
+    min-height: 50px;
+    letter-spacing: 2px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.operation-info-table {
+    font-size: 14px;
+    color: #667eea;
+    text-align: right;
+    margin-top: 8px;
+    font-weight: 600;
+}
+
+.op-symbol {
+    font-weight: bold;
+    color: #764ba2;
+    margin: 0 5px;
+}
+
+/* Buttons Grid - Table */
+.buttons-grid-table {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    flex: 1;
+    min-height: 200px;
+}
+
+.btn-table {
+    padding: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    background: linear-gradient(180deg, #fafafa 0%, #eaeaea 100%);
+    color: #222;
+    transition: transform 0.12s cubic-bezier(.2, .9, .3, 1), box-shadow 0.12s ease, background 0.12s ease;
+    box-shadow: 0 6px 18px rgba(17, 24, 39, 0.06), inset 0 -4px 8px rgba(0, 0, 0, 0.03);
+    position: relative;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn-table::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.28);
+    transition: left 0.35s ease;
+}
+
+.btn-table:hover::before {
+    left: 100%;
+}
+
+.btn-table:hover {
+    background: linear-gradient(180deg, #ffffff 0%, #f0f4ff 100%);
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 12px 28px rgba(17, 24, 39, 0.12);
+}
+
+.btn-table:active {
+    transform: translateY(0) scale(0.995);
+    box-shadow: 0 6px 12px rgba(17, 24, 39, 0.08);
+}
+
+.btn-table:focus {
+    outline: 2px solid rgba(102, 126, 234, 0.25);
+    outline-offset: 2px;
+}
+
+/* Special Button Styles */
+.btn-operation {
+    background: linear-gradient(135deg, #5b6ee8 0%, #7b4fb7 100%);
+    color: white;
+    font-size: 20px;
+    box-shadow: 0 8px 22px rgba(91, 110, 232, 0.18);
+}
+
+.btn-operation:hover {
+    background: linear-gradient(135deg, #495bd6 0%, #6a3e95 100%);
+}
+
+.btn-operation.active {
+    background: linear-gradient(135deg, #7b4fb7 0%, #5b6ee8 100%);
+    box-shadow: 0 0 28px rgba(91, 110, 232, 0.28);
+}
+
+.btn-clear {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+    color: white;
+    font-weight: 800;
+    box-shadow: 0 8px 20px rgba(255, 107, 107, 0.18);
+}
+
+.btn-clear:hover {
+    background: linear-gradient(135deg, #ff5252 0%, #ff3333 100%);
+}
+
+.btn-backspace {
+    background: linear-gradient(135deg, #ffa940 0%, #ff8c00 100%);
+    color: white;
+    font-weight: bold;
+}
+
+.btn-backspace:hover {
+    background: linear-gradient(135deg, #ff8c00 0%, #ff6d00 100%);
+}
+
+.btn-zero {
+    grid-column: span 2;
+}
+
+.btn-equals {
+    background: linear-gradient(135deg, #28c76f 0%, #00b894 100%);
+    color: white;
+    font-size: 20px;
+    grid-column: span 2;
+    box-shadow: 0 10px 28px rgba(40, 199, 111, 0.14);
+}
+
+.btn-equals:hover {
+    background: linear-gradient(135deg, #20b35f 0%, #00a07f 100%);
+}
+
+/* History Section - Table */
+.history-section-table {
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #fbfbff 0%, #f0f4ff 100%);
+    border-radius: 14px;
+    padding: 14px;
+    border: 1px solid rgba(102, 110, 234, 0.12);
+    max-height: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 8px 24px rgba(102, 110, 234, 0.06);
+}
+
+.history-section-table h3 {
+    margin: 0;
+    font-size: 13px;
+    color: #667eea;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.history-list-table {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 11px;
+}
+
+.history-empty-table {
+    color: #999;
+    font-style: italic;
+    text-align: center;
+    padding: 5px;
+}
+
+.history-item-table {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 255, 0.95) 100%);
+    padding: 8px 12px;
+    border-radius: 8px;
+    border-left: 4px solid #6a78f0;
+    color: #222;
+    font-weight: 600;
+    word-break: break-all;
+    font-size: 12px;
+}
+
+.btn-clear-history-table {
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.btn-clear-history-table:hover {
+    background: #ff5252;
+    transform: scale(1.05);
+}
+
+/* Scrollbar Styling */
+.history-list-table::-webkit-scrollbar {
+    width: 5px;
+}
+
+.history-list-table::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.history-list-table::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 10px;
+}
+
+.history-list-table::-webkit-scrollbar-thumb:hover {
+    background: #764ba2;
+}
+
+/* Animations */
+@keyframes tableGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(102, 126, 234, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 60px rgba(102, 126, 234, 0.4);
+    }
+}
+
+.table-front {
+    animation: tableGlow 3s ease-in-out infinite;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.table-content {
+    animation: slideIn 0.45s cubic-bezier(.2, .9, .3, 1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .rotating-table-wrapper {
+        height: 500px;
+    }
+
+    .table-content {
+        padding: 15px;
+        gap: 10px;
+        flex-direction: column;
+        /* stack for small screens */
+    }
+
+    .calculator-title {
+        font-size: 24px;
+    }
+
+    .display-table {
+        font-size: 36px;
+        min-height: 40px;
+    }
+
+    .btn-table {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .history-section-table {
+        max-height: 220px;
+        padding: 10px;
+    }
+
+    .history-item-table {
+        font-size: 9px;
+        padding: 5px 8px;
+    }
+
+    .glow-light {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .rotating-table-wrapper {
+        height: 700px;
+    }
+
+    .buttons-grid-table {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+    }
+
+    .calculator-title {
+        font-size: 20px;
+    }
+
+    .display-table {
+        font-size: 28px;
+    }
+
+    .btn-table {
+        padding: 8px;
+        font-size: 14px;
+    }
+}
+
+/* 3D Transform Enhancements */
+@supports (transform: rotateY(0deg)) {
+    .rotating-table {
+        transform-style: preserve-3d;
+    }
+
+    .table-face {
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+}
