@@ -1,6 +1,6 @@
-# 🧮 React Calculator
+# Calc 3D
 
-A beautiful, modern calculator built with React featuring a clean UI with gradient background and calculation history.
+A beautiful 3D rotating calculator built with React — drag to spin, calculate, and track history.
 
 ## ✨ Features
 

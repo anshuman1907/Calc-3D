@@ -200,7 +200,7 @@ const CalculatorTable = () => {
                             <div className="main-area">
                                 {/* Top Section - Display */}
                                 <div className="calculator-top">
-                                    <h1 className="calculator-title">🧮 CALCULATOR</h1>
+                                    <h1 className="calculator-title">🧮 Calc 3D</h1>
                                     <div className="display-area-table">
                                         <div className="display-table">{display}</div>
                                         {operation && previousValue !== null && (
