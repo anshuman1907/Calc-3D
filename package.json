@@ -2,6 +2,7 @@
   "name": "calc-3d",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://anshuman1907.github.io/Calc-3D",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
