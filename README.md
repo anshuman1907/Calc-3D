@@ -2,6 +2,10 @@
 
 A beautiful 3D rotating calculator built with React — drag to spin, calculate, and track history.
 
+## Project Screenshot
+
+![3D Portfolio](./images)
+
 ## ✨ Features
 
 - ➕ **Addition** - Add two numbers
