@@ -4,7 +4,7 @@ A beautiful 3D rotating calculator built with React — drag to spin, calculate,
 
 ## Project Screenshot
 
-![3D Portfolio](./images)
+![3D Portfolio](./cal3d.png)
 
 ## ✨ Features
 
